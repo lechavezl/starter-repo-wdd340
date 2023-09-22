@@ -4,3 +4,105 @@
 *:after {
   box-sizing: border-box;
 }
+
+/*? BODY STYLES */
+
+body {
+  padding: 0;
+  /* display: flex;
+  justify-content: center;
+  background-image: url("../images/site/checkerboard.jpg");
+  background-size: 380px 380px; */
+}
+
+.main-content {
+  padding: 0;
+}
+
+/* .main-content {
+  width: 85%;
+  background-color: #FFFFFF;
+  border: 5px solid #00B4D5;
+  border-radius: 10px;
+  padding: 10px;
+} */
+
+/*? BODY STYLES END */
+
+
+/*? HEADER STYLES */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+header a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.siteName {
+  font-size: 2rem;
+}
+
+.LogButton {
+  font-size: 1rem;
+}
+
+nav {
+  background-color: #242332;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+  height: 50px;
+  padding: 0;
+}
+
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/*? HEADER STYLES END*/
+
+
+/*? CONTENT STYLES*/
+
+h1 {
+  font-size: 1.4rem;
+}
+
+/*? CONTENT STYLES END*/
+
+
+/**Large View*/
+
+@media only screen and (min-width: 40rem) {
+
+  body {
+    display: flex;
+    justify-content: center;
+    background-image: url("../images/site/checkerboard.jpg");
+    background-size: 380px 380px;
+  }
+
+  .main-content {
+    width: 85%;
+    background-color: #FFFFFF;
+    border: 5px solid #00B4D5;
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
