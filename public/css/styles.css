@@ -9,23 +9,11 @@
 
 body {
   padding: 0;
-  /* display: flex;
-  justify-content: center;
-  background-image: url("../images/site/checkerboard.jpg");
-  background-size: 380px 380px; */
 }
 
 .main-content {
   padding: 0;
 }
-
-/* .main-content {
-  width: 85%;
-  background-color: #FFFFFF;
-  border: 5px solid #00B4D5;
-  border-radius: 10px;
-  padding: 10px;
-} */
 
 /*? BODY STYLES END */
 
@@ -52,7 +40,7 @@ header a {
 }
 
 nav {
-  background-color: #242332;
+  background-color: #DE7E17;
   color: #FFFFFF;
   margin: 0;
   padding: 0;
@@ -82,6 +70,47 @@ nav ul li {
 
 h1 {
   font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.hero-img {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.cta-delorean {
+  position: absolute;
+  width: 140px;
+  top: 0;
+  left: 5px;
+  background-color: #FFFFFF;
+  opacity: .8;
+  color: #DE7E17;
+  font-weight: bold;
+}
+
+.cta-delorean p:nth-child(1) {
+  margin-bottom: 5px;
+  font-size: 1.3rem;
+}
+
+.cta-btn {
+  border: 1px solid gray;
+  background-color: #DE7E17;
+  padding: 8px;
+  margin-top: 10px;
+  width: 70%;
+  text-align: center;
+  color: #000000;
+  font-weight: bolder;
+}
+
+.cta-delorean p {
+  margin: 0;
+  padding: 0;
 }
 
 .reviews p:nth-child(1) {
@@ -90,6 +119,11 @@ h1 {
 
 .reviews ul {
   padding-left: 18px;
+}
+
+.reviews ul li {
+  margin: 15px 0;
+  font-size: 1.1rem;
 }
 
 .upgrades {
@@ -114,6 +148,9 @@ h1 {
 .upgrade p {
   text-align: center;
   margin: 7px 0 0 0;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  color: blue;
 }
 
 .upgrades-background {
@@ -122,13 +159,13 @@ h1 {
   justify-content: center;
   height: 100%;
   width: 100%;
-  background-color: #00B4D5;
+  background-color: #DE7E17;
 }
 
 /*? CONTENT STYLES END*/
 
 
-/**Large View*/
+/**Medium View*/
 
 @media only screen and (min-width: 40rem) {
 
@@ -139,11 +176,87 @@ h1 {
     background-size: 380px 380px;
   }
 
+  nav ul li {
+    font-size: 1.2rem;
+  }
+
+  nav ul li:hover {
+    background-color: #DF5955;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
   .main-content {
     width: 85%;
     background-color: #FFFFFF;
-    border: 5px solid #00B4D5;
+    border: 5px solid #DE7E17;
+    /* border-image: linear-gradient(45deg, #DE7E17, #DF5955, #BA4F7E) 1; */
     border-radius: 10px;
     padding: 10px;
   }
+
+  .cta-delorean {
+    width: 140px;
+    top: 60px;
+    left: 60px;
+  }
+
+  .cta-delorean p {
+    font-size: 1.1rem;
+  }
+
+  .cta-btn {
+    margin-top: 20px;
+  }
+
+  .delorean-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+
+  .upgrades {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .reviews {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 5px;
+  }
+
+  .reviews ul li {
+    font-size: 1.2rem;
+    margin: 35px 0;
+  }
+
+  footer p {
+    font-size: 1.2rem;
+  }
 }
+
+/**Large View End*/
+
+
+/**Large View*/
+
+@media only screen and (min-width: 64rem) {
+  
+  .main-content {
+    width: 65%;
+  }
+
+  .cta-delorean {
+    width: 150px;
+    left: 160px;
+  }
+
+  .cta-btn {
+    margin-top: 25px;
+  }
+}
+
+/**Large View End*/
