@@ -11,6 +11,14 @@ body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+p, a {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
 .main-content {
   padding: 0;
 }
@@ -90,6 +98,7 @@ h1 {
   opacity: .8;
   color: #DE7E17;
   font-weight: bold;
+  border: 1px solid rgb(212, 212, 212);
 }
 
 .cta-delorean p:nth-child(1) {
@@ -106,6 +115,7 @@ h1 {
   text-align: center;
   color: #000000;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .cta-delorean p {
@@ -178,10 +188,15 @@ h1 {
 
   nav ul li {
     font-size: 1.2rem;
+    cursor: default;
   }
 
   nav ul li:hover {
     background-color: #DF5955;
+  }
+
+  .LogButton {
+    font-size: 1.1rem;
   }
 
   h1 {
@@ -201,6 +216,7 @@ h1 {
     width: 140px;
     top: 60px;
     left: 60px;
+    padding: 5px;
   }
 
   .cta-delorean p {
@@ -209,6 +225,12 @@ h1 {
 
   .cta-btn {
     margin-top: 20px;
+    padding: 7px;
+  }
+
+  .cta-btn:hover {
+    color: #FFFFFF;
+    background-color: #DF5955;
   }
 
   .delorean-specs {
