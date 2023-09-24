@@ -111,7 +111,7 @@ h1 {
 .cta-btn {
   border: 1px solid gray;
   background-color: #DE7E17;
-  padding: 8px;
+  padding: 7px;
   margin-top: 10px;
   width: 70%;
   text-align: center;
@@ -227,7 +227,7 @@ h1 {
 
   .cta-btn {
     margin-top: 20px;
-    padding: 7px;
+    padding: 4.2px;
   }
 
   .cta-btn:hover {
@@ -280,6 +280,7 @@ h1 {
 
   .cta-btn {
     margin-top: 25px;
+    padding: 7px;
   }
 }
 
