@@ -2,7 +2,7 @@ CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
-    OWNER TO cse340lc;
+    OWNER TO cse340lch2;
 
 -- Table structure for table `classification`
 CREATE TABLE public.classification (
@@ -237,3 +237,12 @@ VALUES   (
     'White',
     5
   );
+
+-- UPDATE the inv_image and inv_thumbnail from inventory table to teplace
+-- the /images/ substring for /images/vehicles/.
+UPDATE inventory
+SET
+	inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+	inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/')
+WHERE
+	inv_image LIKE '%images/%' OR inv_thumbnail LIKE '%/images%/';
