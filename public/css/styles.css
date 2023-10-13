@@ -176,6 +176,46 @@ h1 {
 
 /*? CONTENT STYLES END*/
 
+/*? INTENVORY STYLES */
+
+#inv-display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#inv-display li {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+#inv-display li a img {
+  border-radius: 10px;
+}
+
+#inv-display hr {
+  padding: 2px;
+  background-color: #000000;
+}
+
+.namePrice {
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.2rem;
+}
+
+.namePrice span {
+  font-size: 1.25rem;
+}
+
+/*? INTENVORY STYLES END*/
+
 
 /**Medium View*/
 
