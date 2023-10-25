@@ -38,4 +38,11 @@ invCont.buildProductViewDetailsById = async function (req, res, next) {
   })
 }
 
+invCont.generateIntentionalError = async function (req, res, next) {
+  // throw an intentional 500 error
+  const error = new Error('This is an intentional 500-type error');
+  error.status = 500;
+  throw error;
+}
+
 module.exports = invCont

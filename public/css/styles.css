@@ -71,6 +71,11 @@ nav ul li {
   height: 100%;
 }
 
+nav ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
 nav ul li a:visited {
   color: #000000;
 }
@@ -257,6 +262,22 @@ h1 {
 }
 
 /*? INVENTORY DETAIL VIEW END */
+
+
+/*? ERROR PAGE */
+
+.error-box {
+  background-color: #DE7E17;
+  padding: 5px;
+  border: 5px solid #DF5955;
+  border-radius: 5px;
+}
+
+.error-message {
+  font-size: 1.3rem;
+}
+
+/*? ERROR PAGE END*/
 
 /**Medium View*/
 
