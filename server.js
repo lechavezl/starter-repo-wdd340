@@ -32,7 +32,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 
 // Inventory routes
-app.use("/inv", inventoryRoute)
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 // Route to generate an intentional error
 app.get('/500Error', utilities.handleErrors(invController.generateIntentionalError))

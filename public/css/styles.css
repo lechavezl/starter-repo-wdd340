@@ -200,6 +200,7 @@ h1 {
 #inv-display li {
   margin: 0 auto;
   width: 202px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -210,9 +211,14 @@ h1 {
   padding-bottom: 8px;
 }
 
+#inv-display li a {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
 #inv-display li a img {
   border-radius: 10px;
-
 }
 
 #inv-display hr {
