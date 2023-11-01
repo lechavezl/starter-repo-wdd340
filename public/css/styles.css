@@ -285,6 +285,95 @@ h1 {
 
 /*? ERROR PAGE END*/
 
+/*? FLASH MESSAGE */
+
+.notice {
+  color: red;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+/*?  FLASH MESSAGE END*/
+
+/*?  Login/Sing-up*/
+
+.login-div {
+  border: 2px solid #000000;
+  border-radius:  10px;
+  padding: 5px;
+  background-color: #DE7E17;
+  width: 95%;
+  margin: 0 auto;
+}
+
+form {
+  margin: 0 auto;
+  padding: 15px 30px;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin: 0 auto 10px auto;
+  font-size: 1.4rem;
+}
+
+input {
+  display: block;
+  font-size: 1.2rem;
+  width: 99%;
+  padding: 13px 3px;
+  border-radius: 10px;
+  margin: 0 auto 10px auto;
+  background-color: #FFFFFF;
+}
+
+.form-note {
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.password-reqs {
+  padding-left: 18px;
+}
+
+.password-req {
+  font-size: 1.1rem;
+}
+
+.form-button, .show-password-button {
+  display: block;
+  padding: 10px 25px;
+  margin: 0 auto 5px auto;
+  border-radius: 30px;
+  font-size: 1rem;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.show-password-button {
+  text-align: left;
+  margin: 0 0 20px 0;
+  padding: 5px;
+}
+
+.change-form {
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.change-form a {
+  color: #000000;
+}
+
+.change-form a:visited {
+  color: #000000;
+}
+
+/*?  Login/Sing-up END*/
+
 /**Medium View*/
 
 @media only screen and (min-width: 40rem) {
@@ -399,6 +488,16 @@ h1 {
   }
 
   /*? INVENTORY DETAIL VIEW STYLES END*/
+
+
+  /*?  Login/Sing-up */
+
+  .login-div {
+    width: 50%;
+  }
+
+  /*?  Login/Sing-up END */
+
 }
 
 /**Large View End*/

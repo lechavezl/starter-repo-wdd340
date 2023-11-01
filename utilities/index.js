@@ -95,6 +95,30 @@ Util.buildProductViewDetailsGrid = async function(data){
   return grid
 }
 
+Util.buildLogin = async function(){
+  let grid
+  grid = '<div class="login-div">'
+  grid += '<form method="post">'
+  grid += '<label for="email">' + 'Email:' + '</label>'
+  grid += '<input type="text" id="email" name="account_email" required>'
+  grid += '<label for="password">' + 'Password:' + '</label>'
+  grid += '<input type="password" id="password" name="account_password" required>'
+  grid += '<p class="form-note">' + 'Password requirements:' + '</p>'
+  grid += '<ul class="password-reqs">'
+  + '<li class="password-req">' + 'Minimum 12 characters' + '</li>'
+  + '<li class="password-req">' + 'Include 1 capital letter' + '</li>'
+  + '<li class="password-req">' + 'Include 1 number' + '</li>'
+  + '<li class="password-req">' + 'Include 1 special character' + '</li>'
+  grid += '</ul>'
+  grid += '<button class="show-password-button" type="submit">' + 'Show Password' + '</button>'
+  grid += '<button class="form-button" type="submit">' + 'LOGIN' + '</button>'
+  grid += '</form>'
+  grid += '<p class="change-form">' + 'No account?' + ' ' + '<a class="change-form-link" href="#">' + 'Sign-up' + '</a>' + '</p>'
+  grid += '</div>'
+
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
