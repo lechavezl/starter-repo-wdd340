@@ -297,7 +297,7 @@ h1 {
 
 /*?  Login/Sing-up*/
 
-.login-div {
+.form-div {
   border: 2px solid #000000;
   border-radius:  10px;
   padding: 5px;
@@ -492,7 +492,7 @@ input {
 
   /*?  Login/Sing-up */
 
-  .login-div {
+  .form-div {
     width: 50%;
   }
 

@@ -1,0 +1,39 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<div class="form-div">
+  <p class="form-required">All fields are required.</p>
+  <form action="/account/register" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" name="account_firstname" id="firstName" required value="<%= locals.account_firstname %>">
+    <label for="lastName">Last Name:</label>
+    <input type="text" name="account_lastname" id="lastName" required value="<%= locals.account_lastname %>">
+    <label for="email">Email:</label>
+    <input type="email" name="account_email" id="email" required value="<%= locals.account_email %>">
+    <label for="password">Password:</label>
+    <input type="password" name="account_password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+    <ul class="password-reqs">
+        <li class="password-req">Minimum 12 characters</li>
+        <li class="password-req">Include 1 capital letter</li>
+        <li class="password-req">Include 1 number</li>
+        <li class="password-req">Include 1 special character</li>
+    </ul>
+    <button class="show-password-button" type="button">Show Password</button>
+    <button class="form-button" type="submit">Register</button>
+  </form>
+</div>
+
+<script src="/js/script.js"></script>

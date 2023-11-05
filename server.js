@@ -17,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
 const accountRoute = require("./routes/accountRoute")
 const invController = require("./controllers/invController")
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
@@ -39,6 +40,10 @@ app.use(function(req, res, next){
   next()
 })
 
+// Make the body parser available to the application
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -58,7 +63,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 // Login route
-app.use("/account", utilities.handleErrors(accountRoute))
+app.use("/account", require("./routes/accountRoute"))
+
+// Account routes
+// app.use("/account", require("./routes/accountRoute"))
 
 // Route to generate an intentional error
 app.get('/500Error', utilities.handleErrors(invController.generateIntentionalError))
