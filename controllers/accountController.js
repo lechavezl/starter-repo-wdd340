@@ -40,7 +40,6 @@ async function registerAccount(req, res) {
     res.status(500).render("account/register", {
       title: "Registration",
       nav,
-      errors: null,
     })
   }
 
@@ -65,7 +64,6 @@ async function registerAccount(req, res) {
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
-      errors: null,
     })
   }
 }
@@ -73,32 +71,33 @@ async function registerAccount(req, res) {
 /* ****************************************
 *  Process Login
 * *************************************** */
-async function loginAccount(req, res) {
-  let nav = await utilities.getNav()
-  const { account_email, account_password } = req.body
+// async function loginAccount(req, res) {
+//   let nav = await utilities.getNav()
+//   const { account_email, account_password } = req.body
 
-  const logResult = await accountModel.loginAccount(
-    account_email,
-    account_password
-  )
+//   const logResult = await accountModel.loginAccount(
+//     account_email,
+//     account_password
+//   )
 
-  if (logResult) {
-    req.flash(
-      "notice",
-      `Congratulations, you\'re logged in ${account_email}.`
-    )
-    res.status(201).render("account/login", {
-      title: "Login",
-      nav,
-    })
-  } else {
-    req.flash("notice", "Sorry, the login process failed.")
-    res.status(501).render("account/login", {
-      title: "Login",
-      nav,
-      errors: null,
-    })
-  }
-}
+//   console.log("Esto es lo que hay en logResult: " + logResult)
 
-module.exports = { buildLogin, buildRegister, registerAccount, loginAccount }
+//   if (logResult) {
+//     req.flash(
+//       "notice",
+//       `Congratulations, you\'re logged in ${account_email}.`
+//     )
+//     res.status(201).render("account/login", {
+//       title: "Login",
+//       nav,
+//     })
+//   } else {
+//     req.flash("notice", "Sorry, the login process failed.")
+//     res.status(501).render("account/login", {
+//       title: "Login",
+//       nav,
+//     })
+//   }
+// }
+
+module.exports = { buildLogin, buildRegister, registerAccount }

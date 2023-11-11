@@ -58,15 +58,17 @@ app.use(static)
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
-
+/* ***********************
+ * Inventory Routes
+ * ************************/
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute))
 
-// Login route
+// Account route
 app.use("/account", require("./routes/accountRoute"))
 
-// Account routes
-// app.use("/account", require("./routes/accountRoute"))
+// Inventory Management route 
+// app.use("/inv/", utilities.handleErrors(inventoryRoute))
 
 // Route to generate an intentional error
 app.get('/500Error', utilities.handleErrors(invController.generateIntentionalError))

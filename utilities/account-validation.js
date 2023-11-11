@@ -53,13 +53,13 @@ validate.loginRules = () => {
         .trim()
         .isEmail()
         .normalizeEmail() // refer to validator.js docs
-        .withMessage("A valid email is required.")
-        .custom(async (account_email) => {
-            const emailExists = await accountModel.checkExistingEmail(account_email)
-            if (!emailExists){
-                throw new Error("Email doesn't exists. Please, use different email")
-              }
-          }),
+        .withMessage("A valid email is required."),
+        // .custom(async (account_email) => {
+        //     const emailExists = await accountModel.checkExistingEmail(account_email)
+        //     if (!emailExists){
+        //         throw new Error("Email doesn't exists. Please, use different email")
+        //       }
+        //   }),
         
         // password is required and must be strong password
         body("account_password")
@@ -71,13 +71,13 @@ validate.loginRules = () => {
           minNumbers: 1,
           minSymbols: 1,
         })
-        .withMessage("Password does not meet requirements.")
-        .custom(async (account_password) => {
-            const passwordExists = await accountModel.checkExistingPassword(account_password)
-            if (!passwordExists){
-                throw new Error("Your password is incorrect. Please enter the correct password.")
-              }
-          }),
+        .withMessage("Password does not meet requirements."),
+        // .custom(async (account_password) => {
+        //     const passwordExists = await accountModel.checkExistingPassword(account_password)
+        //     if (!passwordExists){
+        //         throw new Error("Your password is incorrect. Please enter the correct password.")
+        //       }
+        //   }),
     ]
 }
 
@@ -103,7 +103,7 @@ validate.checkRegData = async (req, res, next) => {
     next()
 }
 
-validate.checkLogData = async (req, res, next) => {
+validate.checkLoginData = async (req, res, next) => {
     const { account_email } = req.body
     let errors = []
     errors = validationResult(req)

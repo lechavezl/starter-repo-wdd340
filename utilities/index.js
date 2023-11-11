@@ -95,6 +95,23 @@ Util.buildProductViewDetailsGrid = async function(data){
   return grid
 }
 
+// Create a drop-down menu to select one of the car classification in the
+// Add a new car form
+Util.dropDownClassification = async function (req, res, next) {
+  let data = await invModel.getClassifications();
+  list = '<select name="classification_name" class="addNewCarOptions" id="classificationName" required>'
+  list += '<option value="" disabled selected>' + 'Choose a Classification' + '</option>'
+  data.rows.forEach((row) => {
+    list += '<option value="'
+    list += row.classification_id
+    list += '">'
+    list += row.classification_name
+    list += '</option>' 
+  })
+  list += '</select>'
+  return list
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

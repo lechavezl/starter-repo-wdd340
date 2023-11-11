@@ -374,6 +374,32 @@ input {
 
 /*?  Login/Sing-up END*/
 
+
+.inv-management-btn {
+  display: block;
+  font-size: 1.3rem;
+  padding: 8px 0;
+}
+
+/*?  Add New Inventory Form*/
+
+.addNewCarOptions {
+  padding: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+textarea {
+  font-size: 1.2rem;
+  width: 99%;
+}
+
+/* #invPrice, #invYear, #invMiles {
+  width: 30%;
+} */
+
+/*?  Add New Inventory Form END*/
+
 /**Medium View*/
 
 @media only screen and (min-width: 40rem) {
