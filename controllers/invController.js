@@ -31,7 +31,7 @@ invCont.buildProductViewDetailsById = async function (req, res, next) {
   const productModel = data[0].inv_model
   const productYear = data[0].inv_year
   // const productPrice = data[0].inv_price
-  res.render("/inventory/productDetails", {
+  res.render("./inventory/productDetails", {
     title: productYear + ' ' + productMake + ' ' + productModel,
     nav,
     grid,
@@ -113,7 +113,8 @@ invCont.addNewVehicleProcess = async function (req, res, next) {
   let nav = await utilities.getNav();
   const {
     classification_id,
-    inv_make, inv_model,
+    inv_make,
+    inv_model,
     inv_description,
     inv_image,
     inv_thumbnail,
@@ -125,10 +126,9 @@ invCont.addNewVehicleProcess = async function (req, res, next) {
 
   const price = parseInt(inv_price);
   const miles = parseInt(inv_miles);
-  const classificationId = parseInt(classification_id);
 
   const addNewVehibleResult = await invModel.addNewVehicle(
-    classificationId,
+    classification_id,
     inv_make,
     inv_model,
     inv_description,

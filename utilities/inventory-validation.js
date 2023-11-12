@@ -25,9 +25,12 @@ validate.addNewInventoryCarRules = () => {
   return [
     // Classification name is required and must be selected
     body("classification_id")
-      .custom((value) => {
-        return value !== "" && value!== null; // This is to verify a classification_id has been selected
-      })
+    .custom((value, { req }) => {
+      if (!value) {
+        throw new Error("A classification name is required. Please select one.");
+      }
+      return true; // La validación pasa si value no es nulo ni una cadena vacía
+    })
       .withMessage("A classification name is required. Plase select one."), // on error this message is sent.
 
     // Make is required and must be min 3 characters
@@ -65,7 +68,7 @@ validate.addNewInventoryCarRules = () => {
     // Price is required and must be a decimal or integer
     body("inv_price")
       .trim()
-      .matches(/^\d*\.?\d*$/)
+      .matches(/^\d+(\.\d{1,2})?$/)
       .withMessage("The Vehicle's price is required and must be a decimal or integer"),
     
     // Year is required and must be a 4-digit year
@@ -115,10 +118,12 @@ validate.checkNewVehicleData = async (req, res, next) => {
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
+    let dropDownClassification = await utilities.dropDownClassification();
     res.render("./inventory/add-inventory", {
       errors,
       title: "Add New Inventory",
       nav,
+      dropDownClassification,
       classification_id,
       inv_make,
       inv_model,

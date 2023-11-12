@@ -48,19 +48,23 @@ header a {
 }
 
 nav {
+  /* display: grid; */
   background-color: #DE7E17;
   color: #000000;
   margin: 0;
-  padding: 0;
+  /* padding: 5px 0; */
+  /* height: auto; */
 }
 
 nav ul {
   display: flex;
+  gap: 0 5px;
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
   height: 50px;
   padding: 0;
+  border-bottom: 1px solid #000000;
 }
 
 nav ul li {
@@ -69,6 +73,8 @@ nav ul li {
   align-items: center;
   width: 100%;
   height: 100%;
+  padding: 5px 0;
+  /* border-bottom: 1px solid #000000; */
 }
 
 nav ul li a {
@@ -215,6 +221,7 @@ h1 {
   width: 100%;
   height: 100%;
   padding: 0;
+  text-align: center;
 }
 
 #inv-display li a img {
@@ -381,6 +388,11 @@ input {
   padding: 8px 0;
 }
 
+.add_classification_note {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
 /*?  Add New Inventory Form*/
 
 .addNewCarOptions {
@@ -392,6 +404,14 @@ input {
 textarea {
   font-size: 1.2rem;
   width: 99%;
+}
+
+input:focus, textarea:focus:valid {
+  background-color: lightgreen;
+}
+
+input:focus:invalid, textarea:focus:invalid {
+  background-color: rgb(255, 103, 103);
 }
 
 /* #invPrice, #invYear, #invMiles {

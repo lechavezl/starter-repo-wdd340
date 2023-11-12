@@ -18,7 +18,6 @@
     <form id="addNewInventory" action="/inv/add-inventory" method="post">
       <label for="classificationName">Classification</label>
       <%- dropDownClassification %>
-      <!-- <select name="classification_name" id="classificationName"></select> -->
 
       <label for="invMake">Make</label>
       <input type="text" name="inv_make" id="invMake" pattern="[A-Za-z]{3,}" placeholder="Min of 3 characters" required value="<%= locals.inv_make %>">
@@ -27,13 +26,13 @@
       <input type="text" name="inv_model" id="invModel" pattern="[A-Za-z]{3,}" placeholder="Min of 3 characters" required value="<%= locals.inv_model %>">
 
       <label for="invDescription">Description</label>
-      <textarea name="inv_description" id="invDescription" cols="40" rows="4" required value="<%= locals.inv_description %>"></textarea>
+      <textarea name="inv_description" id="invDescription" cols="40" rows="4" required><%= locals.inv_description %></textarea>
 
       <label for="imgPath">Image Path</label>
-      <input type="text" name="inv_image" id="imgPath" required value="/images/vehicles/no-image.png">
+      <input type="text" name="inv_image" id="imgPath" required value="/images/vehicles/no-image.png" pattern="^\/[A-Za-z0-9_-]+\.(jpg|jpeg|png|gif)$">
 
       <label for="thumbnailPath">Thumbnail Path</label>
-      <input type="text" name="inv_thumbnail" id="thumbnailPath" required value="/images/vehicles/no-image.png">
+      <input type="text" name="inv_thumbnail" id="thumbnailPath" required value="/images/vehicles/no-image-tn.png" pattern="^\/[A-Za-z0-9_-]+\.(jpg|jpeg|png|gif)$">
 
       <label for="invPrice">Price</label>
       <input type="text" name="inv_price" id="invPrice" pattern="^\d*\.?\d*$" placeholder="Decimal or integer" required value="<%= locals.inv_price %>">
@@ -49,4 +48,6 @@
 
       <button class="form-button" type="submit">Add Vehicle</button>
     </form>
-  </div>
+</div>
+
+<!-- <script src="/js/script.js"></script> -->

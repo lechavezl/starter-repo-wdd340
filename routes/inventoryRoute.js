@@ -36,4 +36,7 @@ router.post(
     utilities.handleErrors(invController.addNewVehicleProcess)
 )
 
+// Route to the intentional error
+router.get('/500Error', utilities.handleErrors(invController.generateIntentionalError))
+
 module.exports = router;

@@ -15,8 +15,6 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
-const accountRoute = require("./routes/accountRoute")
-const invController = require("./controllers/invController")
 const bodyParser = require("body-parser")
 
 /* ***********************
@@ -67,11 +65,8 @@ app.use("/inv", utilities.handleErrors(inventoryRoute))
 // Account route
 app.use("/account", require("./routes/accountRoute"))
 
-// Inventory Management route 
-// app.use("/inv/", utilities.handleErrors(inventoryRoute))
-
 // Route to generate an intentional error
-app.get('/500Error', utilities.handleErrors(invController.generateIntentionalError))
+app.get('/500Error', utilities.handleErrors(inventoryRoute))
 
 /* **************************
 * File Not Found Route - must be last route in list
