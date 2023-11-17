@@ -118,13 +118,12 @@ validate.checkNewVehicleData = async (req, res, next) => {
   errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
-    let dropDownClassification = await utilities.dropDownClassification();
+    let dropDownClassification = await utilities.dropDownClassification(classification_id);
     res.render("./inventory/add-inventory", {
       errors,
       title: "Add New Inventory",
       nav,
       dropDownClassification,
-      classification_id,
       inv_make,
       inv_model,
       inv_description,

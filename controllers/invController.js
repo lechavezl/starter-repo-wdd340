@@ -91,7 +91,7 @@ invCont.addNewClassificationProcess = async function (req, res, next) {
       "notice",
       `New Classification name ${classification_name} has been added.`
     )
-    res.status(201).render("./inventory/add-classification", {
+    res.status(201).render("./inventory/management", {
       title: "Add New Classification",
       nav,
       errors: null,

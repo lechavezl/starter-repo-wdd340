@@ -95,18 +95,35 @@ Util.buildProductViewDetailsGrid = async function(data){
 
 // Create a drop-down menu to select one of the car classification in the
 // Add a new car form
-Util.dropDownClassification = async function (req, res, next) {
+// Util.dropDownClassification = async function (req, res, next) {
+//   let data = await invModel.getClassifications();
+//   list = '<select name="classification_id" class="addNewCarOptions" id="classificationName" required value="'
+//   list += + data.classification_id +'">'
+//   list += '<option value="" disabled selected>' + 'Choose a Classification' + '</option>'
+//   data.rows.forEach((row) => {
+//     list += '<option value="'
+//     list += row.classification_id
+//     list += '">'
+//     list += row.classification_name
+//     list += '</option>' 
+//   })
+//   list += '</select>'
+//   return list
+// }
+
+Util.dropDownClassification = async function (classification_id = null) {
   let data = await invModel.getClassifications();
-  list = '<select name="classification_id" class="addNewCarOptions" id="classificationName" required>'
-  list += '<option value="" disabled selected>' + 'Choose a Classification' + '</option>'
+  let list = '<select name="classification_id" id="classificationId" class="addNewCarOptions">'
+  list += "<option>Choose a Classification</option>"
   data.rows.forEach((row) => {
-    list += '<option value="'
-    list += row.classification_id
-    list += '">'
-    list += row.classification_name
-    list += '</option>' 
+    list += '<option value="' + row.classification_id + '"'
+    if (classification_id != null &&
+      row.classification_id == classification_id) {
+      list += " selected "
+    }
+    list += ">" + row.classification_name + "</option>"
   })
-  list += '</select>'
+  list += "</select>"
   return list
 }
 
