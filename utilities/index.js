@@ -109,6 +109,10 @@ Util.dropDownClassification = async function (classification_id = null) {
   return list
 }
 
+Util.isValidUrl = function (url) {
+  return /\.(jpg|jpeg|png|webp|avif|svg)$/.test(url)
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

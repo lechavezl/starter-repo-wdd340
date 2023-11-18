@@ -124,6 +124,7 @@ validate.checkNewVehicleData = async (req, res, next) => {
       title: "Add New Inventory",
       nav,
       dropDownClassification,
+      classification_id,
       inv_make,
       inv_model,
       inv_description,
