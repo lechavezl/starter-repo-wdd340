@@ -4,9 +4,27 @@
       res.redirect('/')
 } %>
 
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 <%- messages() %>
 
 <div class="inv-management-main">
   <a class ="inv-management-btn" href="/inv/add-classification">Add new classification</a>
   <a class="inv-management-btn" href="/inv/add-inventory">Add new inventory</a>
+
+  <h2>Manage Inventory</h2>
+  <p>Select a classification to see the items that belongs to it.</p>
+  <label for="classificationId"></label>
+  <%- classificationSelect %>
+
+  <table id="inventoryDisplay"></table>
+  <noscript>JavaScript must be enabled to use this page.</noscript>
 </div>
+
+<script src="../../js/inventory.js"></script>

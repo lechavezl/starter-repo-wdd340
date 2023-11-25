@@ -16,6 +16,7 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -38,9 +39,16 @@ app.use(function(req, res, next){
   next()
 })
 
+// Unit 4, Process Registration Activity
 // Make the body parser available to the application
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+// Unit 5, Login Activity
+app.use(cookieParser())
+
+// Unit 5, Login Process Acitivy
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates
