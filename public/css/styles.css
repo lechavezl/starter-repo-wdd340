@@ -381,6 +381,18 @@ input {
 
 /*?  Login/Sing-up END*/
 
+/*?  Update Account Forms */
+
+.account-update-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/*?  Update Account Forms END */
+
+/*?  Inventory Magagement*/
+
 
 .inv-management-btn {
   display: block;
@@ -392,6 +404,32 @@ input {
   font-size: 1.1rem;
   text-align: justify;
 }
+
+/*?  Inventory Magagement END*/
+
+/*?  Account Magagement*/
+
+.account-management-main h2 {
+  margin: 0;
+}
+
+.account-management-main h3 {
+  margin-top: 40px;
+  font-size: 1.2rem;
+}
+
+/* .account-management-main p {
+  margin: 0;
+} */
+
+.account-management-btn {
+  font-size: 1.1rem;
+  /* margin: 0;
+  padding: 0; */
+}
+
+
+/*?  Account Magagement END*/
 
 /*?  Add New Inventory Form*/
 

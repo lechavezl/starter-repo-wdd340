@@ -13,13 +13,19 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:invtId", utilities.handleErrors(invController.buildProductViewDetailsById));
 
 // Inventory Management View
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+router.get("/",
+utilities.checkAuthAccountLogin,
+utilities.handleErrors(invController.buildManagementView));
 
 // Add new classification route
-router.get("/add-classification", utilities.handleErrors(invController.buildNewClassification));
+router.get("/add-classification",
+utilities.checkAuthAccountLogin,
+utilities.handleErrors(invController.buildNewClassification));
 
 // Add new inventory route
-router.get("/add-inventory", utilities.handleErrors(invController.buildNewInventoryVehicle));
+router.get("/add-inventory",
+utilities.checkAuthAccountLogin,
+utilities.handleErrors(invController.buildNewInventoryVehicle));
 
 //* Get inventory for AJAX Route
 //* Unit 5, Select inv item activity
@@ -55,6 +61,7 @@ utilities.handleErrors(invController.updateInventory))
 //Display the delete view to delete an item (vehicle) from the inventory (database)
 router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteVehicleView))
 
+// Delete the vehicle and redirect the page
 router.post("/delete/", utilities.handleErrors(invController.deleteVehicle))
 
 // Route to the intentional error

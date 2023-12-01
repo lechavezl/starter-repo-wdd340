@@ -2,6 +2,7 @@ const accountModel = require("../models/account-model")
 const utilities = require("../utilities")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const invCont = require("./invController")
 require("dotenv").config()
 
 /* ****************************************
@@ -112,4 +113,20 @@ async function accountLogin(req, res) {
  }
 }
 
-module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin}
+// Build and Display the Edit Account Data view.
+async function buildEditAccountView (req, res, next) {
+  const account_id = parseInt(req.params.account_id)
+  let nav = await utilities.getNav()
+  const accountData = await accountModel.getAccountById(account_id)
+  res.render("./account/update", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    account_id: accountData.account_id,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+  })
+}
+
+module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin, buildEditAccountView}

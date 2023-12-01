@@ -24,6 +24,9 @@ router.post(
     utilities.handleErrors(accountController.registerAccount)
 )
 
+/* ****************************************
+* Process Login
+************************************** */
 router.post(
     "/login",
     regValidate.loginRules(),
@@ -31,8 +34,13 @@ router.post(
     utilities.handleErrors(accountController.accountLogin)
 )
 
+// Build the Account Management View
 router.get("/",
 utilities.checkLogin,
 utilities.handleErrors(accountController.buildAccountManagement))
+
+//Display the Edit Account View
+router.get("/update/:account_id",
+utilities.handleErrors(accountController.buildEditAccountView))
 
 module.exports = router;

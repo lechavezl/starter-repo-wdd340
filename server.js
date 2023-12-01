@@ -50,6 +50,9 @@ app.use(cookieParser())
 // Unit 5, Login Process Acitivy
 app.use(utilities.checkJWTToken)
 
+// Unit 5 part 2, Check Loging with a Admin/Employee account
+app.use(utilities.checkAccountType)
+
 /* ***********************
  * View Engine and Templates
  *************************/

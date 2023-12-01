@@ -126,12 +126,8 @@ Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)
 * Middleware to check token validity
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
-  if (req.cookies.jwt) {
-   jwt.verify(
-    req.cookies.jwt,
-    process.env.ACCESS_TOKEN_SECRET,
-    function (err, accountData) {
-     if (err) {
+  if (req.cookies.jwt) {jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+    if (err) {
       req.flash("Please log in")
       res.clearCookie("jwt")
       return res.redirect("/account/login")
@@ -153,6 +149,54 @@ Util.checkLogin = (req, res, next) => {
     next()
   } else {
     req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+Util.checkAccountType = (req, res, next) => {
+  if (req.cookies.jwt) {jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET, function (err, accountData) {
+    if (err) {
+      req.flash("Please log in")
+      res.clearCookie("jwt")
+      return res.redirect("/account/login")
+    }
+
+    if (accountData.account_type === "Admin" || accountData.account_type === "Employee") {
+      res.locals.accountType = accountData.account_type
+      res.locals.authorizedAccount = 1
+      next()
+    } else {
+      next()
+    }
+  })
+  } else {
+    next()
+  }
+}
+
+/* ****************************************
+ *  Check Login
+ * ************************************ */
+Util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
+ *  Check Login of Admin or Employee
+ * ************************************ */
+Util.checkAuthAccountLogin = (req, res, next) => {
+  if (res.locals.authorizedAccount) {
+    next()
+  } else {
+    req.flash("notice", "Please log in with an authorized account.")
     return res.redirect("/account/login")
   }
 }
