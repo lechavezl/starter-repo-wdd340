@@ -107,6 +107,14 @@ async function accountLogin(req, res) {
   const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
   res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
   return res.redirect("/account/")
+  } else {
+    req.flash("notice", "Please check your credentials and try again.")
+    res.status(400).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      account_email,
+    })
   }
  } catch (error) {
   return new Error('Access Forbidden')
@@ -182,7 +190,21 @@ async function changeAccountPassword (req, res, next) {
   // const account_id = parseInt(req.body.account_id)
   const {account_id, account_password} = req.body
 
-  const changePasswordResult = await accountModel.changeAccountPassword(account_id, account_password)
+  // Hash the password before storing
+  let hashedPassword
+  try {
+    // regular password and cost (salt is generated automatically)
+    hashedPassword = await bcrypt.hashSync(account_password, 10)
+  } catch (error) {
+    req.flash("notice", 'Sorry, there was an error changing the password.')
+    res.status(500).render("account/update", {
+      title: "Registration",
+      nav,
+      errors: null,
+    })
+  }
+
+  const changePasswordResult = await accountModel.changeAccountPassword(account_id, hashedPassword)
 
   if (changePasswordResult) {
     req.flash("notice", "Congratulations, your password has been changed.")
@@ -198,6 +220,16 @@ async function changeAccountPassword (req, res, next) {
   }
 }
 
+async function logoutAccount (req, res, next) {
+  let nav = await utilities.getNav()
+
+  if (req.cookies.jwt) {
+    res.clearCookie("jwt")
+    req.flash("notice", "You logged out successfully")
+    return res.redirect("/")
+  }
+}
 
 
-module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin, buildEditAccountView, updateAccountData}
+
+module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin, buildEditAccountView, updateAccountData, changeAccountPassword, logoutAccount }

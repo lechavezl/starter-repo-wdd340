@@ -122,4 +122,4 @@ async function changeAccountPassword(
   }
 }
 
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccountData }
+module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccountData, changeAccountPassword }

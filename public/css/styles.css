@@ -389,6 +389,22 @@ input {
   gap: 50px;
 }
 
+.update-account-data-heading {
+  text-align: center;
+}
+
+.update-password-heading {
+  text-align: center;
+}
+
+.account-update-note {
+  font-size: 1.1rem;
+}
+
+.account-update-note > span {
+  font-weight: bold;
+} 
+
 /*?  Update Account Forms END */
 
 /*?  Inventory Magagement*/

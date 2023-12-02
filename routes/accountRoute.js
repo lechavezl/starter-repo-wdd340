@@ -51,9 +51,13 @@ router.post("/update/",
 )
 
 //Change the account password
-router.post("/change-password",
-    regValidate.changePasswordRules,
+router.post("/change-password/",
+    regValidate.changePasswordRules(),
     regValidate.checkChangePassword,
-    utilities.handleErrors(accountController.changeAccountPassword))
+    utilities.handleErrors(accountController.changeAccountPassword)
+)
+
+//Logout from the account
+router.get("/logout", utilities.handleErrors(accountController.logoutAccount))
 
 module.exports = router;
