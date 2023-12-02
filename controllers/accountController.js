@@ -129,4 +129,75 @@ async function buildEditAccountView (req, res, next) {
   })
 }
 
-module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin, buildEditAccountView}
+/* ****************************************
+*  Update account information
+* *************************************** */
+
+async function updateAccountData(req, res) {
+  let nav = await utilities.getNav()
+  const {
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+  } = req.body
+
+  const updateAccountData = await accountModel.updateAccountData(
+    account_id,  
+    account_firstname,
+    account_lastname,
+    account_email
+  )
+
+  const accountData = await accountModel.getAccountById(account_id)
+
+  if (updateAccountData) {
+    req.flash("notice", "Congratulations, your information has been updated.")
+    if (await accountData.account_password) {
+      delete accountData.account_password
+      const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+      res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+      // req.flash("notice", "Congratulations, your information has been updated.")
+      return res.redirect("/account/")
+      }
+  } else {
+    req.flash("notice", "Please check your credentials and try again.")
+   res.status(400).render("account/login", {
+    title: "Login",
+    nav,
+    errors: null,
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email,
+   })
+  }
+}
+
+/* ****************************************
+*  Change the account password
+* *************************************** */
+async function changeAccountPassword (req, res, next) {
+  let nav = await utilities.getNav();
+  // const account_id = parseInt(req.body.account_id)
+  const {account_id, account_password} = req.body
+
+  const changePasswordResult = await accountModel.changeAccountPassword(account_id, account_password)
+
+  if (changePasswordResult) {
+    req.flash("notice", "Congratulations, your password has been changed.")
+    res.redirect("/account/")
+  } else {
+    req.flash("notice", "Sorry, password coudn't be changed.")
+    req.status(501).render("./account/update", {
+      title: "Edit Account",
+      nav,
+      errors: null,
+      account_id,
+    })
+  }
+}
+
+
+
+module.exports = { buildLogin, buildRegister, buildAccountManagement, registerAccount, accountLogin, buildEditAccountView, updateAccountData}

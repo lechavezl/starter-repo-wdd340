@@ -190,11 +190,30 @@ validate.checkUpdateData = async (req, res, next) => {
     let nav = await utilities.getNav()
     res.render("account/update", {
       errors,
-      title: "Registration",
+      title: "Edit Account",
       nav,
       account_firstname,
       account_lastname,
       account_email,
+    })
+    return
+  }
+  next()
+}
+
+/* ******************************
+ * Check data and return errors or continue
+ * updating the account data
+ * ***************************** */
+validate.checkChangePassword = async (req, res, next) => {
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/update", {
+      errors,
+      title: "Edit Account",
+      nav,
     })
     return
   }

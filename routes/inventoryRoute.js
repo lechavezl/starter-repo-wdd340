@@ -14,18 +14,18 @@ router.get("/detail/:invtId", utilities.handleErrors(invController.buildProductV
 
 // Inventory Management View
 router.get("/",
-utilities.checkAuthAccountLogin,
-utilities.handleErrors(invController.buildManagementView));
+    utilities.checkAuthAccountLogin,
+    utilities.handleErrors(invController.buildManagementView));
 
 // Add new classification route
 router.get("/add-classification",
-utilities.checkAuthAccountLogin,
-utilities.handleErrors(invController.buildNewClassification));
+    utilities.checkAuthAccountLogin,
+    utilities.handleErrors(invController.buildNewClassification));
 
 // Add new inventory route
 router.get("/add-inventory",
-utilities.checkAuthAccountLogin,
-utilities.handleErrors(invController.buildNewInventoryVehicle));
+    utilities.checkAuthAccountLogin,
+    utilities.handleErrors(invController.buildNewInventoryVehicle));
 
 //* Get inventory for AJAX Route
 //* Unit 5, Select inv item activity
@@ -54,9 +54,10 @@ router.get("/edit/:edit_invId", utilities.handleErrors(invController.buildEditVe
 
 //This route is to send to updated data to the database and make the cahnges.
 router.post("/update/",
-validateData.addNewInventoryCarRules(),
-validateData.checkUpdateData,
-utilities.handleErrors(invController.updateInventory))
+    validateData.addNewInventoryCarRules(),
+    validateData.checkUpdateData,
+    utilities.handleErrors(invController.updateInventory)
+)
 
 //Display the delete view to delete an item (vehicle) from the inventory (database)
 router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDeleteVehicleView))

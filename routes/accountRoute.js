@@ -36,11 +36,24 @@ router.post(
 
 // Build the Account Management View
 router.get("/",
-utilities.checkLogin,
-utilities.handleErrors(accountController.buildAccountManagement))
+    utilities.checkLogin,
+    utilities.handleErrors(accountController.buildAccountManagement)
+)
 
 //Display the Edit Account View
-router.get("/update/:account_id",
-utilities.handleErrors(accountController.buildEditAccountView))
+router.get("/update/:account_id", utilities.handleErrors(accountController.buildEditAccountView))
+
+//Update the Account Data
+router.post("/update/",
+    regValidate.updateAccountRules(),
+    regValidate.checkUpdateData,
+    utilities.handleErrors(accountController.updateAccountData)
+)
+
+//Change the account password
+router.post("/change-password",
+    regValidate.changePasswordRules,
+    regValidate.checkChangePassword,
+    utilities.handleErrors(accountController.changeAccountPassword))
 
 module.exports = router;

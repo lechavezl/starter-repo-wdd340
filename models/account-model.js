@@ -80,4 +80,46 @@ async function getAccountById (account_id) {
   }
 }
 
-module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById }
+/* ***************************
+ *  Update Account Information
+ * ************************** */
+async function updateAccountData(
+  account_id,
+  account_firstname,
+  account_lastname,
+  account_email
+  ) {
+  try {
+    const sql = "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4 RETURNING *";
+    const data = await pool.query(sql, [
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id
+    ]);
+    return data.rows[0]
+  } catch (error) {
+    console.error("model error: " + error)
+  }
+}
+
+/* ***************************
+ *  Change Account Password
+ * ************************** */
+async function changeAccountPassword(
+  account_id,
+  account_password
+  ) {
+  try {
+    const sql = "UPDATE public.account SET account_password = $1 WHERE account_id = $2 RETURNING *";
+    const data = await pool.query(sql, [
+      account_password,
+      account_id
+    ]);
+    return data.rows[0]
+  } catch (error) {
+    console.error("model error: " + error)
+  }
+}
+
+module.exports = { registerAccount, checkExistingEmail, getAccountByEmail, getAccountById, updateAccountData }
