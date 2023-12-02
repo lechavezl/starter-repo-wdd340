@@ -85,7 +85,8 @@ invCont.buildNewInventoryVehicle = async function (req, res, next) {
 * *************************************** */
 invCont.addNewClassificationProcess = async function (req, res, next) {
   const { classification_name } = req.body
-
+  
+  const classificationSelect = await utilities.dropDownClassification()
   const addClassificationResult = await invModel.addNewClassification(classification_name)
 
   if (addClassificationResult) {
@@ -98,6 +99,7 @@ invCont.addNewClassificationProcess = async function (req, res, next) {
       title: "Add New Classification",
       nav,
       errors: null,
+      classificationSelect,
     })
   } else {
     req.flash("notice", "Sorry, we cound't add the new classification name.")
@@ -130,6 +132,7 @@ invCont.addNewVehicleProcess = async function (req, res, next) {
   const price = parseInt(inv_price);
   const miles = parseInt(inv_miles);
 
+  const classificationSelect = await utilities.dropDownClassification()
   const addNewVehibleResult = await invModel.addNewVehicle(
     classification_id,
     inv_make,
@@ -152,6 +155,7 @@ invCont.addNewVehicleProcess = async function (req, res, next) {
       title: "Inventory Management",
       nav,
       errors: null,
+      classificationSelect,
     })
   } else {
     req.flash("notice", "Sorry, we cound't add the new vehicle to the inventory.")
@@ -242,7 +246,7 @@ invCont.updateInventory = async function (req, res, next) {
 
   if (updateResult) {
     const itemName = updateResult.inv_make + " " + updateResult.inv_model
-    req.flash("notice", `The ${itemName} was succesfully added.`)
+    req.flash("notice", `The ${itemName} was succesfully updated.`)
     res.redirect("/inv/")
   } else {
     const classificationSelect = await utilities.dropDownClassification(classification_id)
